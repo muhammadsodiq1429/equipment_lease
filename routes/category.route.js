@@ -1,0 +1,21 @@
+const config = require("config");
+const admin_access_key = config.get("admin.access_key");
+
+const {
+  addNewCategory,
+  getAllCategory,
+  getCategoryById,
+  updateCategoryById,
+  deleteCategoryById,
+} = require("../controllers/category.controller");
+const userGuard = require("../middleware/guards/user.guard");
+
+const router = require("express").Router();
+
+router.post("/", userGuard([admin_access_key]), addNewCategory);
+router.get("/", getAllCategory);
+router.get("/:id", getCategoryById);
+router.put("/:id", userGuard([admin_access_key]), updateCategoryById);
+router.delete("/:id", userGuard([admin_access_key]), deleteCategoryById);
+
+module.exports = router;
