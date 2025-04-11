@@ -9,7 +9,7 @@ const {
   updateRentalRatesById,
   deleteRentalRates,
 } = require("../controllers/rental_rates.controller");
-const userGuard = require("../middleware/guards/user.guard");
+const userGuard = require("../middleware/guards/auth.guard");
 
 const router = require("express").Router();
 

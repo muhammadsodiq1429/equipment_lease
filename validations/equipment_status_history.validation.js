@@ -9,4 +9,4 @@ exports.equipmentStatusHistoryValidation = (body) => {
     changed_by_role: Joi.string().required(),
   });
   return equipmentStatusHistorySchema.validate(body, { abortEarly: false });
-};
+}

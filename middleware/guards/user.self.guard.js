@@ -12,7 +12,7 @@ module.exports = function (roleKeys = []) {
       }
 
       return res.status(403).send({
-        message: "Faqat shaxsiy ma'lumotlarni ko'rishga ruxsat etiladi.",
+        message: "Faqat shaxsiy ma'lumotlarni bilan ishlashga ruxsat etiladi.",
       });
     } catch (error) {
       errorHandler(error, res);

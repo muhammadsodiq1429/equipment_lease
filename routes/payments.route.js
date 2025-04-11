@@ -9,7 +9,7 @@ const {
   updatePaymentById,
   deletePaymentById,
 } = require("../controllers/payments.controller");
-const userGuard = require("../middleware/guards/user.guard");
+const userGuard = require("../middleware/guards/auth.guard");
 
 router.post("/", userGuard([admin_access_key]), addNewPayment);
 router.get("/", getAllPayments);

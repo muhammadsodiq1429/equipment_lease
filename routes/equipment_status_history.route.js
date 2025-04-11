@@ -9,7 +9,7 @@ const {
   updateEquipmentStatusHistoryById,
   deleteEquipmentStatusHistoryById,
 } = require("../controllers/equipment_status_history.controller");
-const userGuard = require("../middleware/guards/user.guard");
+const userGuard = require("../middleware/guards/auth.guard");
 
 const router = require("express").Router();
 

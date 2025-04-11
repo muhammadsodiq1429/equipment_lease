@@ -9,7 +9,7 @@ const {
   updateContractById,
   deleteContractById,
 } = require("../controllers/contracts.controller");
-const userGuard = require("../middleware/guards/user.guard");
+const userGuard = require("../middleware/guards/auth.guard");
 
 router.post(
   "/",

@@ -10,7 +10,7 @@ const {
   updateEquipmentImageById,
   deleteEquipmentImageById,
 } = require("../controllers/equipment_images.controller");
-const userGuard = require("../middleware/guards/user.guard");
+const userGuard = require("../middleware/guards/auth.guard");
 
 router.post(
   "/",

@@ -41,7 +41,9 @@ module.exports = function (access_keys = []) {
       }
 
       if (!verified) {
-        return res.status(403).send({ message: "Access denied" });
+        return res
+          .status(403)
+          .send({ message: "Ruxsat etilmagan foydalanuvchi" });
       }
 
       next();

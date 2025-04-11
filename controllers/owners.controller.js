@@ -50,6 +50,7 @@ const getAllOwners = async (req, res) => {
 
 const getOwnerById = async (req, res) => {
   try {
+    console.log("getOwnerById");
     const id = req.params.id;
     const owner = await Owners.findByPk(id, {
       include: [
@@ -60,6 +61,26 @@ const getOwnerById = async (req, res) => {
     if (!somethingNotFoundById(res, owner, "Owner")) return;
 
     res.send(owner);
+  } catch (error) {
+    errorHandler(error, res);
+  }
+};
+
+const getAllOwnerContracts = async (req, res) => {
+  try {
+    const owner = await Owners.findByPk(req.params.id, {
+      include: [
+        { model: Contracts, as: "contracts" },
+        { model: Equipments, as: "equipments" },
+      ],
+    });
+    console.log(owner);
+    if (!somethingNotFoundById(res, owner, "Owner")) return;
+
+    if (!owner.contracts) {
+      return res.status(404).send({ message: "Owner contracts not found" });
+    }
+    res.send({ allContracts: owner.contracts });
   } catch (error) {
     errorHandler(error, res);
   }
@@ -228,4 +249,5 @@ module.exports = {
   signinOwner,
   signoutOwner,
   refreshOwnerTokens,
+  getAllOwnerContracts,
 };

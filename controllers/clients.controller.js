@@ -59,6 +59,23 @@ const getClientById = async (req, res) => {
   }
 };
 
+const getAllClientContracts = async (req, res) => {
+  try {
+    const clients = await Clients.findByPk(req.params.id, {
+      include: [{ model: Contracts, as: "contracts" }],
+    });
+    console.log(clients);
+    if (!somethingNotFoundById(res, clients, "Client")) return;
+
+    if (!clients.contracts) {
+      return res.status(404).send({ message: "Client contracts not found" });
+    }
+    res.send({ allContracts: clients.contracts });
+  } catch (error) {
+    errorHandler(error, res);
+  }
+};
+
 const updateClientById = async (req, res) => {
   try {
     const id = req.params.id;
@@ -223,4 +240,5 @@ module.exports = {
   signinClient,
   signoutClient,
   refreshClientTokens,
+  getAllClientContracts
 };

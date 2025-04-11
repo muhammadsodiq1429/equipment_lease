@@ -8,7 +8,7 @@ const {
   updateContractStatusById,
   deleteContractStatus,
 } = require("../controllers/contract_status.controller");
-const userGuard = require("../middleware/guards/user.guard");
+const userGuard = require("../middleware/guards/auth.guard");
 
 const router = require("express").Router();
 

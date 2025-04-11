@@ -11,7 +11,7 @@ const {
   signinAdmin,
   signoutAdmin,
 } = require("../controllers/admins.controller");
-const userGuard = require("../middleware/guards/user.guard");
+const userGuard = require("../middleware/guards/auth.guard");
 const superAdminGuard = require("../middleware/guards/super.admin.guard");
 const userSelfGuard = require("../middleware/guards/user.self.guard");
 const adminSelfGuard = require("../middleware/guards/admin.self.guard");
@@ -25,13 +25,13 @@ router.get("/:id", userGuard([admin_access_key]), adminSelfGuard, getAdminById);
 router.put(
   "/update_admin_password/:id",
   userGuard([admin_access_key]),
-  userSelfGuard,
+  adminSelfGuard,
   updateAdminPassword
 );
 router.put(
   "/:id",
   userGuard([admin_access_key]),
-  userSelfGuard,
+  adminSelfGuard,
   updateAdminById
 );
 router.post("/signin", signinAdmin);
@@ -39,7 +39,7 @@ router.post("/signout", signoutAdmin);
 router.delete(
   "/:id",
   userGuard([admin_access_key]),
-  userSelfGuard,
+  adminSelfGuard,
   deleteAdminById
 );
 
