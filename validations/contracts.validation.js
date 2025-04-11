@@ -8,6 +8,8 @@ exports.contractsValidation = (body) => {
     total_amount: Joi.number().required(),
     terms_and_conditions: Joi.string().trim().optional(),
     description: Joi.string().trim().optional(),
+    start_date: Joi.date().required(),
+    end_date: Joi.date().required(),
   });
 
   return schema.validate(body, { abortEarly: false });

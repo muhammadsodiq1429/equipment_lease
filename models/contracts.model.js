@@ -39,6 +39,12 @@ const Contracts = sequelize.define("contracts", {
       key: "id",
     },
   },
+  start_date: {
+    type: DataTypes.DATE,
+  },
+  end_date: {
+    type: DataTypes.DATE,
+  },
   total_amount: {
     type: DataTypes.DECIMAL,
   },
@@ -67,7 +73,7 @@ Contracts.belongsTo(Clients, {
   foreignKey: { name: "client_id" },
   as: "client",
   onDelete: "CASCADE",
-  onUpdate: "CASCADE", 
+  onUpdate: "CASCADE",
 });
 Clients.hasMany(Contracts, {
   foreignKey: "client_id",

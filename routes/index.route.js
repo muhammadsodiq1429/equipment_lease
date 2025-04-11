@@ -13,6 +13,7 @@ const contractStatusRouter = require("./contract_status.route");
 const equipmentItemsRouter = require("./equipment_items.route");
 const equipmentImagesRouter = require("./equipment_images.route");
 const equipmentStatusRouter = require("./equipment_status.route");
+const intelligentInquiryRouter = require("./intelligent.inquiry.route");
 const equipmentStatusHistoryRouter = require("./equipment_status_history.route");
 
 router.use("/admins", adminsRouter);
@@ -28,7 +29,7 @@ router.use("/contract_status", contractStatusRouter);
 router.use("/equipment_items", equipmentItemsRouter);
 router.use("/equipment_images", equipmentImagesRouter);
 router.use("/equipment_status", equipmentStatusRouter);
+router.use("/intelligent-inquiry", intelligentInquiryRouter);
 router.use("/equipment_status_history", equipmentStatusHistoryRouter);
 
-
-module.exports = router
+module.exports = router;
